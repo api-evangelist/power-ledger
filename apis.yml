@@ -1,17 +1,37 @@
 aid: power-ledger
 name: Powerledger
-description: 'Powerledger is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Powerledger (Powerledger AG / Power Ledger Pty Ltd, Perth, Western Australia)
+  builds software for tracking, tracing and trading renewable energy and environmental
+  commodities. Its platform is modular and sold to utilities, retailers, network operators,
+  generators and corporates rather than to developers: xGrid and uGrid for peer-to-peer
+  energy trading across and behind the meter, TraceX as a marketplace for Renewable Energy
+  Certificates and other Energy Attribute Certificates (integrated with the M-RETS and
+  ERCOT registries), Vision and PPA Vision for 24/7 renewable portfolio and PPA tracking,
+  plus hydrogen and EV settlement products. Powerledger originally ran its own permissioned
+  Solana-derived chain (the Powerledger Energy Blockchain, source at github.com/PowerLedger/powr)
+  and has since moved to Solana mainnet, where the POWR SPL token lives. As of this profile
+  Powerledger publishes no public developer portal, API reference, or machine-readable API
+  contract of any kind.'
 url: https://raw.githubusercontent.com/api-evangelist/power-ledger/refs/heads/main/apis.yml
+image: https://powerledger.io/wp-content/uploads/2024/08/Powerledger_Logo-long_colour_digital-6.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-harvest-source-url: https://forgeglobal.com/power-ledger_stock/
 specificationVersion: '0.20'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Company
+- Energy
+- Renewable Energy
+- Energy Trading
+- Environmental Commodities
+- Renewable Energy Certificates
+- Blockchain
+- Sustainability
+- Utilities
+- Carbon
+- Australia
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -20,4 +40,62 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://forgeglobal.com/power-ledger_stock/
+  url: https://powerledger.io/
+- type: About
+  url: https://powerledger.io/company/about/
+- type: Blog
+  url: https://powerledger.io/media/
+- type: BlogRSS
+  url: https://powerledger.io/feed/
+- type: Support
+  url: https://powerledger.io/contact/
+- type: FAQ
+  url: https://powerledger.io/faqs/
+- type: PrivacyPolicy
+  url: https://powerledger.io/privacy-policy/
+- type: Disclaimer
+  url: https://powerledger.io/disclaimer/
+- type: Whitepaper
+  url: https://powerledger.io/company/power-ledger-whitepaper/
+- type: GitHubOrganization
+  url: https://github.com/PowerLedger
+- type: Packages
+  url: packages/power-ledger-packages.yml
+- type: LLMsTxt
+  url: llms/power-ledger-llms.txt
+- type: Lifecycle
+  url: lifecycle/power-ledger-lifecycle.yml
+- type: DomainSecurity
+  url: security/power-ledger-domain-security.yml
+- type: Plans
+  url: plans/power-ledger-plans-pricing.yml
+x-enrichment:
+  date: '2026-08-26'
+  status: minimal
+  artifacts_added: 7
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Powerledger sells its energy-trading and REC platform to utilities, retailers and
+    corporates and publishes nothing for developers — docs.powerledger.io and
+    developer.powerledger.io do not resolve, api.powerledger.io returns a Google front-end
+    502 on every path including /openapi.json, and the only machine-callable endpoint the
+    company publishes anywhere is the Solana JSON-RPC entrypoint named in its own validator
+    README, which no longer answers now that Powerledger has moved off its own chain onto
+    Solana mainnet.
+  evidence:
+  - url: https://api.powerledger.io/openapi.json
+    status: 502
+  - url: https://docs.powerledger.io/
+    status: '<no response>'
+  - url: https://developer.powerledger.io/
+    status: '<no response>'
+  - url: https://powr-api.mainnet.powerledger.io
+    status: '<no response>'
+  - url: https://powerledger.io/.well-known/api-catalog
+    status: 404
+  - url: https://powerledger.io/llms.txt
+    status: 404
+  checked: '2026-08-26'

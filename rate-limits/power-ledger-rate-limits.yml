@@ -1,0 +1,26 @@
+generated: '2026-08-26'
+method: searched
+source: https://powerledger.io/ and https://github.com/PowerLedger
+name: Powerledger rate limits
+description: >-
+  No rate limits are documented, because no API is documented. Powerledger serves no
+  developer portal, no API reference and no machine-readable contract, so there is no
+  published quota, window, burst allowance or exhaustion status code, and no
+  X-RateLimit-*/RateLimit-*/Retry-After header behaviour to record.
+limit_count: 0
+limits: []
+response_headers: []
+note: >-
+  Honest zero. No `RateLimits` pointer is emitted in apis.yml: that type feeds the
+  agent-readiness rate-limit-signal dimension, and a pointer here would assert a runtime
+  signal on a provider that exposes no runtime at all. If Powerledger ever publishes an
+  API reference, this file is where the limits go and the pointer becomes correct.
+evidence:
+- url: https://api.powerledger.io/
+  status: 502
+- url: https://docs.powerledger.io/
+  status: '<no response>'
+  note: Hostname does not resolve.
+- url: https://developer.powerledger.io/
+  status: '<no response>'
+  note: Hostname does not resolve.

@@ -1,0 +1,65 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://registry.npmjs.org/-/v1/search?text=scope:powrldgr,
+  https://registry.npmjs.org/@powrldgr%2Fraydium-sdk-v2,
+  https://api.github.com/orgs/PowerLedger/repos
+name: Powerledger packages
+description: >-
+  Registry search for first-party Powerledger client libraries. npm, PyPI and crates.io were
+  all queried. Powerledger publishes exactly one package, under the @powrldgr npm scope
+  (maintainer npmjs-pl), and it is a re-published fork of the third-party Raydium DEX SDK
+  rather than a client for a Powerledger API. Because Powerledger ships no public API, there
+  is no first-party API client library in any registry — so no `SDKs` pointer is emitted in
+  apis.yml, only `Packages`. Emitting SDKs here would credit Powerledger with an API client
+  it does not publish.
+registries_searched:
+- registry: npm
+  queries: ['scope:powrldgr', 'powerledger', 'powrldgr']
+  result: 1 package
+- registry: pypi
+  queries: ['powerledger']
+  result: 404 — no package
+- registry: crates.io
+  queries: ['powr', 'powerledger']
+  result: >-
+    no Powerledger-owned crate; the `powr` crate (0.3.0, 2022-11-30) is an unrelated
+    JS/TS tokenizer project, not Powerledger's validator software
+- registry: rubygems
+  queries: ['powerledger']
+  result: not searched — no Ruby surface indicated anywhere in Powerledger's repos or docs
+packages:
+- name: '@powrldgr/raydium-sdk-v2'
+  registry: npm
+  url: https://www.npmjs.com/package/@powrldgr/raydium-sdk-v2
+  language: TypeScript
+  version: 0.0.14-alpha
+  published: '2025-09-04'
+  license: GPL-3.0
+  official: true
+  first_party_client: false
+  repository: https://github.com/PowerLedger/raydium-sdk-V2
+  npm_maintainer: npmjs-pl
+  note: >-
+    Published by Powerledger (npm maintainer npmjs-pl, repository is the PowerLedger GitHub
+    org's fork of raydium-io/raydium-sdk-V2), so official:true. It is a fork of Raydium's
+    Solana DEX SDK, used around the POWR SPL token listing on Raydium — it is not a client
+    library for any Powerledger API. Still alpha (0.0.14-alpha) and last published
+    2025-09-04, roughly a year before this probe.
+unpublished_first_party_code:
+- repo: https://github.com/PowerLedger/powr
+  note: >-
+    Powerledger Energy Blockchain validator node software, a fork of the Solana validator.
+    Distributed as source to be built by validators, not as a registry package; use is
+    governed by the Powerledger Validator Node Terms and Conditions in the repo. Last
+    pushed 2024-06-24.
+- repo: https://github.com/PowerLedger/powr-program-library
+  note: Fork of solana-labs/solana-program-library for the powr chain. Last pushed 2024-02-22. No crate published under a Powerledger owner.
+- repo: https://github.com/PowerLedger/powr-spl-token
+  note: >-
+    POWR token on Solana mainnet-beta, mint PowerhfyX6JqFprXzy89fPBSKqmLj8Yzcvr3FkHrQHR.
+    Repository content only; no package. Last pushed 2025-09-15.
+- repo: https://github.com/PowerLedger/powr-explorer
+  note: Fork of the Solana block explorer for powr clusters. Last pushed 2023-08-31. Not published to npm.
+- repo: https://github.com/PowerLedger/energy-markets-protocol
+  note: Fork of the on-chain Monaco protocol. Last pushed 2025-01-08.

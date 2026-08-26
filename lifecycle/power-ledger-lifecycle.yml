@@ -1,0 +1,78 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://powerledger.io/blockchain-technology/,
+  https://github.com/PowerLedger/powr (README),
+  https://powerledger.io/media/
+name: Powerledger lifecycle
+description: >-
+  Versioning, deprecation and operational-status posture. Powerledger publishes no API, so
+  there is no API version scheme, no Sunset/Deprecation header policy and no SLA to record.
+  What it does have is a platform-level migration that this pipeline probed directly: the
+  company retired its own permissioned chain in favour of Solana mainnet, and the RPC
+  endpoint its own validator documentation still names no longer answers.
+api_versioning:
+  scheme: null
+  note: No public API, therefore no published versioning scheme.
+deprecation_policy:
+  published: false
+  sunset_header: unknown
+  note: >-
+    No deprecation policy page and no RFC 8594 Sunset/Deprecation header practice is
+    documented anywhere on powerledger.io or in the PowerLedger GitHub org. No
+    `Deprecation` pointer is emitted in apis.yml.
+status_page:
+  published: false
+  probed:
+  - url: https://status.powerledger.io/
+    status: '<no response>'
+    note: Hostname does not resolve.
+  note: No status page found. No `StatusPage` pointer is emitted in apis.yml.
+sla:
+  published: false
+  note: No public SLA. Powerledger contracts its platform with utilities and retailers directly.
+platform_transitions:
+- name: Powerledger Energy Blockchain to Solana mainnet
+  kind: platform-migration
+  announced_by: https://powerledger.io/blockchain-technology/
+  quote: >-
+    "we have evolved from our own blockchain to integrating with Solana mainnet, harnessing
+    the full potential of Solana's network and ecosystem capabilities for Powerledger's
+    products"
+  effect_on_developers: >-
+    The Powerledger Energy Blockchain was a permissioned Solana-derived chain with its own
+    JSON-RPC entrypoint. The POWR token now lives on Solana mainnet-beta as an SPL token
+    (mint PowerhfyX6JqFprXzy89fPBSKqmLj8Yzcvr3FkHrQHR) and trades on Raydium and Jupiter.
+  evidence:
+  - url: https://powerledger.io/blockchain-technology/
+    status: 200
+  - url: https://github.com/PowerLedger/powr-spl-token
+    status: 200
+  window: not stated — Powerledger publishes no dated cutover or grandfathering window for the old chain.
+dead_endpoints:
+- endpoint: https://powr-api.mainnet.powerledger.io
+  role: >-
+    JSON-RPC entrypoint for the Powerledger Energy Blockchain, still named as
+    `json_rpc_url` in the validator setup instructions in the README of
+    https://github.com/PowerLedger/powr (last pushed 2024-06-24).
+  dns: resolves to 67.209.52.38
+  probe:
+    method: 'POST {"jsonrpc":"2.0","id":1,"method":"getVersion"}'
+    https_status: '<no response>'
+    http_status: '<no response>'
+    note: >-
+      One bounded attempt each over https and http; neither returned. The hostname resolves
+      but nothing answered. Read together with the documented move to Solana mainnet, the
+      chain this endpoint fronted appears to be retired while the setup instructions that
+      point at it are still published.
+- endpoint: https://api.powerledger.io/
+  probe:
+    status: 502
+    note: >-
+      Resolves to a Google front end (34.111.232.72) that returns "502 Server Error" on
+      every path probed (/, /openapi.json, /swagger.json, /v1/openapi.json, /api-docs,
+      /docs, /graphql, /health). A named API host with no backend behind it.
+- endpoint: https://explorer.powerledger.io/
+  probe:
+    status: '<no response>'
+    note: Resolves to 34.16.81.61; no HTTP response on 443 or 80 within the probe window.

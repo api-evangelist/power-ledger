@@ -1,0 +1,27 @@
+generated: '2026-08-26'
+method: searched
+source: https://powerledger.io/ (full sitemap walk of https://powerledger.io/sitemap-1.xml)
+name: Powerledger plans and pricing
+description: >-
+  Powerledger publishes no pricing at all. Its sitemap contains no /pricing page, its
+  navigation has no pricing entry, and every product page (xGrid, uGrid, TraceX, Vision,
+  PPA Vision) ends in a contact form rather than a tier list. The platform is contracted
+  with utilities, retailers, network operators, generators and corporates; the FAQ states
+  plainly that Powerledger "is not consumer-to-consumer software at this stage" and that
+  access requires "your local energy retailer, network operator or, in Australia, property
+  developer, to be involved and offer our products to you."
+pricing_url: null
+plan_count: 0
+plans: []
+note: >-
+  plan_count 0 is a measured absence, not a gap in this pass. There is nothing to price
+  because there is no self-serve product and no API. No `Pricing` pointer is emitted in
+  apis.yml, because emitting one would assert a pricing page Powerledger does not serve.
+evidence:
+- url: https://powerledger.io/sitemap-1.xml
+  status: 200
+  note: 100+ URLs, none of them a pricing page.
+- url: https://powerledger.io/faqs/
+  status: 200
+- url: https://powerledger.io/platform/
+  status: 200

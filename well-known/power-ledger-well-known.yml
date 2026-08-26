@@ -1,0 +1,55 @@
+generated: '2026-08-26'
+method: probed
+source: direct HTTP probes of /.well-known/* on every Powerledger host reachable from this run
+name: Powerledger .well-known probe
+description: >-
+  Every /.well-known/ path this pipeline probes, on each Powerledger host. Nothing was
+  served: powerledger.io (WordPress) returns a 404 HTML error page for all of them, the
+  TraceX application host answers 404 with its single-page-app shell, and api.powerledger.io
+  answers a Google front-end 502 on every path including the well-known namespace. No
+  WellKnown or SecurityTxt pointer is emitted in apis.yml because no path returned a
+  document — this file records a verified absence, not a presence.
+hosts:
+- host: powerledger.io
+  note: Marketing site, WordPress (WordPress.com / Jetpack). Returns the themed 404 page for every path below.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: tracex.powerledger.io
+  note: >-
+    TraceX application host. Serves a 1.2KB client-rendered SPA shell carrying
+    <meta name="robots" content="noindex, nofollow">; every path returns the same shell,
+    so a 200 here would not be a document.
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+- host: api.powerledger.io
+  note: >-
+    Hostname resolves (34.111.232.72, Google front end) but every path — /, /openapi.json,
+    /swagger.json, /v1/openapi.json, /api-docs, /docs, /graphql, /health — returns
+    "502 Server Error ... The server encountered a temporary error". The name is mapped to
+    a backend that is not answering, so no well-known namespace could be read.
+  documents:
+  - path: /.well-known/security.txt
+    status: 502
+    file: null
