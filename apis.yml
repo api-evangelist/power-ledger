@@ -13,6 +13,17 @@ description: 'Powerledger (Powerledger AG / Power Ledger Pty Ltd, Perth, Western
   Powerledger publishes no public developer portal, API reference, or machine-readable API
   contract of any kind.'
 url: https://raw.githubusercontent.com/api-evangelist/power-ledger/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://powerledger.io/wp-content/uploads/2024/08/Powerledger_Logo-long_colour_digital-6.png
 x-type: company
 x-source: harvest:secondary-market
