@@ -63,6 +63,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: RateLimits
+  url: rate-limits/power-ledger-rate-limits.yml
 - type: Website
   url: https://powerledger.io/
 - type: About
